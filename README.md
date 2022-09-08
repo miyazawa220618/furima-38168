@@ -1,24 +1,57 @@
-# README
+# データベース設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                      |
+| ------------------ | ------ | ---------------------------- |
+| nickname           | string | nill: false                  |
+| email              | string | nill: false,uniqueness: true |
+| encrypted_password | string | nill: false                  |
+| last_name          | string | nill: false                  |
+| first_name         | string | nill: false                  |
+| last_name_kana     | string | nill: false                  |
+| first_name_kana    | string | nill: false                  |
+| birth_date         | date   | nill: false                  |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :orders
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column                   | Type       | Options                        |
+| ------------------------ | ---------- | ------------------------------ |
+| item_name                | string     | nill: false                    |
+| item_info                | text       | nill: false                    |
+| item_category            | string     | nill: false                    |
+| item_sales_status        | string     | nill: false                    |
+| item_shipping_fee_status | string     | nill: false                    |
+| item_prefecture          | string     | nill: false                    |
+| item_scheduled-delivery  | integer    | nill: false                    |
+| item_price               | integer    | nill: false                    |
+| user                     | references | nill: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- belongs_to :order
+- has_one_attached :item_image
 
-* Services (job queues, cache servers, search engines, etc.)
+## orders テーブル
 
-* Deployment instructions
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| postal_code  | integer    | nill: false                    |
+| prefecture   | string     | nill: false                    |
+| city         | string     | nill: false                    |
+| addresses    | string     | nill: false                    |
+| building     | text       |                                |
+| phone_number | integer    | nill: false                    |
+| item         | references | nill: false, foreign_key: true |
+| user         | references | nill: false, foreign_key: true |
 
-* ...
+### Association
+
+- has_many :items
+- belongs_to :user
