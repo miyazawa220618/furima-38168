@@ -49,7 +49,7 @@
 
 - belongs_to :item
 - belongs_to :user
-- has_many :addresses
+- has_one :address
 
 ## addresses テーブル
 
