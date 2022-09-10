@@ -24,10 +24,10 @@
 | ---------------------- | ---------- | ------------------------------ |
 | name                   | string     | nill: false                    |
 | info                   | text       | nill: false                    |
-| category_id            | string     | nill: false                    |
-| sales_status_id        | string     | nill: false                    |
-| shipping_fee_status_id | string     | nill: false                    |
-| prefecture_id          | string     | nill: false                    |
+| category_id            | integer    | nill: false                    |
+| sales_status_id        | integer    | nill: false                    |
+| shipping_fee_status_id | integer    | nill: false                    |
+| prefecture_id          | integer    | nill: false                    |
 | scheduled-delivery_id  | integer    | nill: false                    |
 | price                  | integer    | nill: false                    |
 | user                   | references | nill: false, foreign_key: true |
@@ -44,24 +44,24 @@
 | ------- | ---------- | ------------------------------ |
 | item    | references | nill: false, foreign_key: true |
 | user    | references | nill: false, foreign_key: true |
-| address | references | nill: false, foreign_key: true |
 
 ### Association
 
-- has_many :items
+- belongs_to :item
 - belongs_to :user
-- belongs_to :address
+- has_many :addresses
 
 ## addresses テーブル
 
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| postal_code_id | string | nill: false |
-| prefecture_id  | string | nill: false |
-| city           | string | nill: false |
-| addresses      | string | nill: false |
-| building       | string |             |
-| phone_number   | string | nill: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | nill: false                    |
+| prefecture_id | integer    | nill: false                    |
+| city          | string     | nill: false                    |
+| house_number  | string     | nill: false                    |
+| building      | string     |                                |
+| phone_number  | string     | nill: false                    |
+| order         | references | nill: false, foreign_key: true |
 
 ### Association
 
