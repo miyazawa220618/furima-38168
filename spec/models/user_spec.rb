@@ -45,6 +45,24 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
+      it 'passwordは英字のみの文字列では登録できない' do
+        @user.password = 'abcdefg'
+        @user.password_confirmation = 'abcdefg'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+      it 'passwordは数字のみの文字列では登録できない' do
+        @user.password = '123456'
+        @user.password_confirmation = '123456'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+      it 'passwordは全角文字を含む場合は登録できない' do
+        another_password = FactoryBot.build(:user, password: @user.password + '１')
+        @user.password_confirmation = another_password.password
+        another_password.valid?
+        expect(another_password.errors.full_messages).to include("Password is invalid")
+      end
       it 'passwordとpassword_confirmationが不一致では登録できない' do
         @user.save
         @user.password_confirmation = @user.password + 'a'
