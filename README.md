@@ -28,7 +28,7 @@
 | sales_status_id        | integer    | nill: false                    |
 | shipping_fee_status_id | integer    | nill: false                    |
 | prefecture_id          | integer    | nill: false                    |
-| scheduled-delivery_id  | integer    | nill: false                    |
+| scheduled_delivery_id  | integer    | nill: false                    |
 | price                  | integer    | nill: false                    |
 | user                   | references | nill: false, foreign_key: true |
 
