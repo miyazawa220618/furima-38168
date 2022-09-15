@@ -25,4 +25,12 @@ window.addEventListener('load', function(){
     };
 
   });
+
+  // 編集画面に表示
+  if (!itemPrice.value){return false;}
+  if (!taxPrice.innerHTML && !profitPrice.innerHTML){
+    taxPrice.innerHTML = Math.round(itemPrice.value * 0.1);
+    const taxValue = taxPrice.innerHTML;
+    profitPrice.innerHTML = itemPrice.value - taxValue;
+  };
 });
