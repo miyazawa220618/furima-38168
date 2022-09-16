@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order("created_at DESC")
+    @order = Order.all
   end
 
   def new
@@ -21,6 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def show
+    if @item.order.present?
+      @order = true
+    else
+      @order = false
+    end
   end
 
   def edit
@@ -48,7 +54,9 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless user_signed_in? && current_user.id == @item.user.id
+    if ((user_signed_in? && current_user.id == @item.user.id) == false) || @item.order.present?
+      redirect_to action: :index
+    end
   end
 
   def set_item

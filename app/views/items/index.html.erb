@@ -135,18 +135,18 @@
           <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
             <%= image_tag item.item_image, class: "item-img" %>
-            <%# 商品が売れていればsold outを表示しましょう %>
-            <!-- <div class='sold-out'>
+            <% if @order.exists?(item_id: item.id) %>
+            <div class='sold-out'>
               <span>Sold Out!!</span>
-            </div> -->
-            <%# //商品が売れていればsold outを表示しましょう %>
+            </div>
+            <% end %>
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
               <%= item.name %>
             </h3>
             <div class='item-price'>
-              <span><%= item.price %>円<br><%= item.shipping_fee_status.name %></span>
+              <span><%= item.price.to_s(:delimited) %>円<br><%= item.shipping_fee_status.name %></span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
