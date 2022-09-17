@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: :index
   before_action :order_seller_control, only: :index
 
   def index
