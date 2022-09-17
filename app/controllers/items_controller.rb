@@ -22,11 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if @item.order.present?
-      @order = true
-    else
-      @order = false
-    end
+    @order = if @item.order.present?
+               true
+             else
+               false
+             end
   end
 
   def edit
@@ -54,9 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    if ((user_signed_in? && current_user.id == @item.user.id) == false) || @item.order.present?
-      redirect_to action: :index
-    end
+    redirect_to action: :index if ((user_signed_in? && current_user.id == @item.user.id) == false) || @item.order.present?
   end
 
   def set_item
