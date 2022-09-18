@@ -534,13 +534,17 @@ a {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
-.item-lists>.list {
+.item-lists .list {
   width: 31.2%;
   padding: 20px 0;
+  margin-right: 3.2%;
   background-color: #FFF;
+}
+
+.item-lists .list:nth-child(3n){
+  margin-right: 0;
 }
 
 .item-img-content {
@@ -663,6 +667,11 @@ a {
   .item-lists>.list {
     width: 48%;
     padding: 3.2vw 0;
+    margin-right: 4%;
+  }
+  
+  .item-lists .list:nth-child(2n){
+    margin-right: 0;
   }
   
   .item-img {
