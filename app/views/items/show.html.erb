@@ -4,7 +4,8 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= @item.name %>
+      <div class='name-deco'></div>
+      <span><%= @item.name %></span>
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.item_image ,class:"item-box-img" %>
@@ -26,9 +27,11 @@
     </div>
 
     <% if user_signed_in? && current_user.id == @item.user.id && @order == false %>
-      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+      <div class='item-btn-box'>
+        <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+      </div>
     <% elsif user_signed_in? && current_user.id != @item.user.id && @order == false %>
       <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
@@ -92,14 +95,14 @@
     </form>
   </div>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
+    <a href="#" class="change-item-btn _rear">
+      前の商品
     </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
+    <a href="#" class="change-item-btn _next">
+      後ろの商品
     </a>
   </div>
-  <a href="#" class="another-item"><%= @item.category.name %>をもっと見る</a>
+  <a href="#" class="another-item"><b><%= @item.category.name %></b> をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>

@@ -1,10 +1,34 @@
 * {
   box-sizing: border-box;
 }
+html{
+  font-size: 62.5%;
+}
+
+.none{display: none;}
+.block{display: block;}
+@media screen and (min-width:1121px){
+  .l-none{display: none;}
+  .l-block{display: block;}
+  .l-inline{display: inline;}
+}
+@media screen and (max-width:1120px){
+  .m-none{display: none;}
+  .m-block{display: block;}
+  .m-inline{display: inline;}
+}
+@media screen and (max-width:700px){
+  .s-none{display: none;}
+  .s-block{display: block;}
+  .s-inline{display: inline;}
+}
+
 
 .top-page-header {
-  width: 100vw;
-  padding: 2vh 15vw;
+  width: 96%;
+  max-width: 1040px;
+  padding: 16px 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -13,92 +37,166 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 12px 10px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #e4e4e4;
 }
 
 .furima-icon {
-  width: 10vw;
-  margin-right: 10vw;
+  width: 20%;
+  max-width: 152px;
 }
+.furima-icon img{width: 100%;}
 
 .search-form {
-  width: 65vw;
-  height: 5vh;
+  width: 72%;
   display: flex;
-  margin-bottom: 5px;
 }
 
 .search-form>.input-box {
-  width: 100%;
-  height: 5vh;
-  padding-left: 10px;
+  width: 92%;
+  padding: 10px 16px;
+  background-color: rgb(231, 237, 237);
+  border: none;
+  border-radius: 30px 0 0 30px;
+  font-size: 1.6rem;
 }
 
 .search-button {
-  width: 5vh;
-  border: 0;
+  width: 9.2%;
+  max-width: 56px;
+  border: none;
   cursor: pointer;
   background-color: #3ccace;
-  padding: 8px;
+  border-radius: 0 30px 30px 0;
+  padding-right: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-icon {
-  width: 100%;
+  width: 80%;
+  height: 64%;
+  object-fit: contain;
 }
 
 .nav {
-  font-size: 18px;
+  font-size: 1.8rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1vh 0;
+  padding: 0 4px;
 }
 
 .lists-left {
   display: flex;
-  min-width: 200px;
-
+  justify-content: space-between;
+  width: 24%;
+  max-width: 200px;
 }
 
-.category-list {
+.category-list,.brand-list{
   text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
+  color: #606060;
+  position: relative;
 }
-
-.brand-list {
-  text-decoration: none;
-  color: #333333;
+.category-list::after,.brand-list::after{
+  content: '';
+  background-color: #3ccace;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: 0.3s;
+}
+.category-list:hover:after,.brand-list:hover::after{
+  width: 100%;
 }
 
 .lists-right {
   display: flex;
-  list-style: none;
   align-items: flex-end;
+  list-style: none;
 }
 
+.user-nickname,.logout,.login,.sign-up{
+  text-decoration: none;
+  color: #606060;
+  position: relative;
+}
+.user-nickname::after,.logout::after,.login::after,.sign-up::after{
+  content: '';
+  background-color: #3ccace;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: 0.3s;
+}
+.user-nickname:hover:after,.logout:hover::after,.login:hover::after,.sign-up:hover::after{
+  width: 100%;
+}
 
 .user-nickname {
-  text-decoration: none;
   margin-right: 3vw;
-  color: #333333;
   font-weight: bold;
 }
 
-
-.logout {
-  text-decoration: none;
-  color: #333333;
-}
-
 .login {
-  text-decoration: none;
-  line-height: 32px;
   margin-right: 3vw;
-  color: #333333;
 }
 
-.sign-up {
-  text-decoration: none;
-  color: #333333;
+
+@media screen and (max-width:1120px){
+  .nav {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width:700px){
+  .top-page-header {
+    padding: 4vw 0 3.2vw;
+  }
+  
+  .search-bar-contents {
+    padding: 0 1.2vw 2.4vw;
+    margin-bottom: 2.4vw;
+    border-bottom: 2px solid #e4e4e4;
+  }
+  
+  .furima-icon {
+    width: 27.4%;
+  }
+
+  .search-form {
+    width: 68%;
+  }
+  
+  .search-form .input-box {
+    padding: 1.6vw 4vw;
+    font-size: 3.6vw;
+  }
+  
+  .search-button {
+    width: 16%;
+    padding-right: 2vw;
+  }
+  
+  .search-icon {
+    width: 80%;
+    height: 64%;
+    object-fit: contain;
+  }
+
+  .nav {
+    font-size: 3.6vw;
+  }
+
+  .lists-left {
+    width: 38%;
+    max-width: none;
+  }
 }
