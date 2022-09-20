@@ -82,7 +82,7 @@ html{
 }
 
 .nav {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -94,7 +94,7 @@ html{
   display: flex;
   justify-content: space-between;
   width: 24%;
-  max-width: 200px;
+  max-width: 180px;
 }
 
 .category-list,.brand-list{
@@ -153,11 +153,12 @@ html{
 
 @media screen and (max-width:1120px){
   .nav {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width:700px){
   .top-page-header {
+    width: 97.2%;
     padding: 4vw 0 3.2vw;
   }
   
@@ -168,16 +169,16 @@ html{
   }
   
   .furima-icon {
-    width: 27.4%;
+    width: 31.2%;
   }
 
   .search-form {
-    width: 68%;
+    width: 64%;
   }
   
   .search-form .input-box {
-    padding: 1.6vw 4vw;
-    font-size: 3.6vw;
+    padding: 2vw 4vw;
+    font-size: 3.8vw;
   }
   
   .search-button {
@@ -192,11 +193,21 @@ html{
   }
 
   .nav {
-    font-size: 3.6vw;
+    font-size: 4.0vw;
   }
 
   .lists-left {
-    width: 38%;
+    width: 41.2%;
     max-width: none;
+  }
+
+  .lists-right{
+    max-width: 56%;
+  }
+  .lists-right li:first-child{
+    max-width: calc(96vw - 64vw);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
