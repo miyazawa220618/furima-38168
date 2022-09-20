@@ -113,6 +113,10 @@ a {
   .store-btn a{
     display: block;
   }
+
+  .store-btn a:first-child{
+    width: 46%;
+  }
   
   .apple-btn {
     height: 10.4vw;
